@@ -1,13 +1,74 @@
 package Linked_List;
 
 public class Creation_ll {
-    public class Node{
+    public static class Node {
         int data;
         Node next;
 
-        Node(int data){
-            this.data=data;
-            this.next=null;
+        Node(int data) {
+            this.data = data;
+            this.next = null;
         }
+    }
+
+    public static Node head;
+    public static Node tail;
+
+    // creating Node at first
+    public static void atFirst(int data) {
+        Node newNode = new Node(data);
+        if (head == null) {
+            head = tail = newNode;
+        }
+        // logic
+        newNode.next = head;
+        head = newNode;
+    }
+
+    // create a node at last
+    public static void atLast(int data) {
+        Node newNode = new Node(data);
+        if (head == null) {
+            head = tail = newNode;
+        }
+        tail.next=newNode;
+        tail=newNode;
+    }
+    // create a node at middle of linked list
+    public static void atMiddle(int data,int pos){
+        if(pos==0){
+            atFirst(data);
+            return;
+        }
+        Node newNode=new Node(data);
+        Node temp=head;
+        for(int i=0; i<pos-1; i++){
+            temp=temp.next;
+        }
+       newNode.next=temp.next;
+       temp.next=newNode;
+
+    }
+    // display the linked list
+    public static void display(){
+        Node temp=head;
+        if(head==null){
+            System.out.println("linked is empty");
+        }
+        while(temp!=null){
+            System.out.print(temp.data+" ");
+            temp=temp.next;
+        }
+    }
+    public static void main(String[] args) {
+        Creation_ll ll = new Creation_ll();
+        ll.atFirst(3);
+        ll.atFirst(1);
+        ll.atLast(4);
+        ll.atLast(6);
+        ll.atFirst(5);
+        ll.atMiddle(9, 2);
+        ll.display();
+
     }
 }
