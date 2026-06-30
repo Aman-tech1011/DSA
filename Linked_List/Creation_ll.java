@@ -102,17 +102,17 @@ public class Creation_ll {
 }
     public static void main(String[] args) {
         Creation_ll ll = new Creation_ll();
-        ll.atFirst(3);
-        ll.atFirst(1);
-        ll.atLast(4);
-        ll.atLast(6);
-        ll.atFirst(5);
-        ll.atMiddle(9, 2);
-        ll.removeAtFirst();
-        ll.removeAtFirst();
-        ll.display();
-        ll.size();
-        System.out.println(ll.iterativeSearch(4));
+        // ll.atFirst(3);
+        // ll.atFirst(1);
+        // ll.atLast(4);
+        // ll.atLast(6);
+        // ll.atFirst(5);
+        // ll.atMiddle(9, 2);
+        // ll.removeAtFirst();
+        // ll.removeAtFirst();
+        // ll.display();
+        // ll.size();
+        // System.out.println(ll.iterativeSearch(4));
 
     }
 }
