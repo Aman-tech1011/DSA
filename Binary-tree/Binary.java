@@ -1,3 +1,6 @@
+import java.util.Queue;
+import java.util.LinkedList;
+
 class Binary {
 
     static class Node {
@@ -58,6 +61,53 @@ class Binary {
             postOrder(root.right);
             System.out.println(root.data);
         }
+        // level Order traversal
+        public static void levelOrder(Node root){
+            if(root==null){
+                return;
+            }
+            Queue<Node>q=new LinkedList<>();
+            q.add(root);
+            q.add(null);
+            while(!q.isEmpty()){
+                Node currNode=q.remove();
+                if(currNode==null){
+                    System.out.println();
+                    if(!q.isEmpty()){
+                        q.add(null);
+                    }
+                }else{
+                    System.out.print(currNode.data + " ");
+                    if(currNode.left!=null){
+                        q.add(currNode.left);
+                    }
+                    if(currNode.right!=null){
+                        q.add(currNode.right);
+                    }
+                }
+            }
+        }
+        // height of tree
+        public static int height(Node root){
+            if(root==null){
+                return 0;
+            }
+            int leftHeight=height(root.left);
+            int rightHeight=height(root.right);
+            return Math.max(leftHeight,rightHeight)+1;
+        }
+
+        // count of nodes
+        public static int count(Node root){
+            if(root==null){
+                return 0;
+            }
+            int leftCount=count(root.left);
+            int rightCount=count(root.right);
+          
+            return leftCount+rightCount+1;
+
+        }
     }
 
     public static void main(String[] args) {
@@ -67,12 +117,27 @@ class Binary {
         };
 
         BinaryTree tree = new BinaryTree();
-
         Node root = tree.buildTree(nodes);
+        //tree.levelOrder(root);
+        //System.out.println("Height of the tree: " + tree.height(root));
+        System.out.println("Height of the tree: " + tree.count(root));
 
-       // System.out.println(root.data);
-      // tree.preOrder(root);
-      // tree.inOrder(root);
-      tree.postOrder(root);
     }
 }
+    // public static void main(String[] args) {
+
+    //     int[] nodes = {
+    //         1,2,4,-1,-1,5,-1,-1,3,-1,6,-1,-1
+    //     };
+
+    //     BinaryTree tree = new BinaryTree();
+
+    //     Node root = tree.buildTree(nodes);
+
+    //    // System.out.println(root.data);
+    //   // tree.preOrder(root);
+    //   // tree.inOrder(root);
+    //   //tree.postOrder(root);
+    //     tree.levelOrder(root);
+//     }
+// }
