@@ -108,6 +108,16 @@ class Binary {
             return leftCount+rightCount+1;
 
         }
+        // sum nodes
+        public static int sum(Node root){
+            if(root==null){
+                return 0;
+            }
+            int leftSum=sum(root.left);
+            int rightSum=sum(root.right);
+
+            return leftSum+rightSum+root.data;
+        }
     }
 
     public static void main(String[] args) {
@@ -120,7 +130,8 @@ class Binary {
         Node root = tree.buildTree(nodes);
         //tree.levelOrder(root);
         //System.out.println("Height of the tree: " + tree.height(root));
-        System.out.println("Height of the tree: " + tree.count(root));
+        // System.out.println("Height of the tree: " + tree.count(root));
+        System.out.println("Sum of Nodes : "+tree.sum(root));
 
     }
 }
