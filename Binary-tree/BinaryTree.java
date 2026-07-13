@@ -1,3 +1,4 @@
+import java.util.*;
 public class BinaryTree {
 
     static class Node {
@@ -43,6 +44,49 @@ public class BinaryTree {
         int selft=leftHeight+rightHeight+1;
         return Math.max(selft,Math.max(rightDia, leftDia));
      }
+     // top view of tree
+    static class Pair {
+       Node node;
+       int hd;
+
+       Pair(Node node,int hd){
+        this.node=node;
+        this.hd=hd;
+       }
+        
+    }
+     public static void topView(Node root) {
+
+    if (root == null) {
+        return;
+    }
+
+    Queue<Pair> q = new LinkedList<>();
+    TreeMap<Integer, Integer> map = new TreeMap<>();
+
+    q.add(new Pair(root, 0));
+
+    while (!q.isEmpty()) {
+
+        Pair curr = q.remove();
+
+        if (!map.containsKey(curr.hd)) {
+            map.put(curr.hd, curr.node.data);
+        }
+
+        if (curr.node.left != null) {
+            q.add(new Pair(curr.node.left, curr.hd - 1));
+        }
+
+        if (curr.node.right != null) {
+            q.add(new Pair(curr.node.right, curr.hd + 1));
+        }
+    }
+
+    for (int value : map.values()) {
+        System.out.print(value + " ");
+    }
+}
     public static void main(String[] args) {
         Node root = new Node(1);
         root.left = new Node(2);
@@ -54,6 +98,8 @@ public class BinaryTree {
 
        // preorder(root);
       //System.out.println("Height of tree: "+height(root));
-        System.out.println("Diameter of tree: "+diameter(root));
+        // System.out.println("Diameter of tree: "+diameter(root));
+        System.out.println("topview : ");
+        topView(root);
     }
 }
