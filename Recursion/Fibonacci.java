@@ -1,4 +1,4 @@
-//package Recursion;
+
 
 public class Fibonacci {
     public static int fibo(int n) {
@@ -10,7 +10,7 @@ public class Fibonacci {
     }
 
     public static void main(String[] args) {
-        int n = 5;
+        int n = 11;
        for(int i=0; i<=n; i++){
         System.out.println(fibo(i));
        }
