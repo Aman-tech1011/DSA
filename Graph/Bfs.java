@@ -38,11 +38,20 @@ public class Bfs {
      // vertex 6
      graph[6].add(new Edge(6, 5));
     }
-// graph traversal using bfs
-    public static void bfs(ArrayList<Edge>[] graph){
-        Queue<Integer>q=new LinkedList<>();
-        boolean vis[]=new boolean[graph.length];
 
+// graph traversal using bfs
+
+    public static void bfs(ArrayList<Edge>[] graph){
+      boolean vis[]=new boolean[graph.length];
+
+      for(int i=0; i<graph.length; i++){
+        if(!vis[i]){
+            bfsUtil(graph,vis);
+        }
+      }
+    }
+    public static void bfsUtil(ArrayList<Edge>[] graph,boolean []vis){
+        Queue<Integer>q=new LinkedList<>();
         q.add(0);  // starting source
 
         while(!q.isEmpty()){
@@ -58,15 +67,24 @@ public class Bfs {
             }
         }
     }
+
 // graph traversal using dfs
-    public static void dfs(ArrayList<Edge>[] graph,int curr,boolean []vis){
+     public static void dfs(ArrayList<Edge>[] graph){
+      boolean [] vis=new boolean[graph.length];
+      for(int i=0; i<graph.length; i++){
+        if(!vis[i]){
+            dfsUtil(graph,i, vis);
+        }
+      }
+     }
+    public static void dfsUtil(ArrayList<Edge>[] graph,int curr,boolean []vis){
         System.out.print(curr+" ");
         vis[curr]=true;
 
         for(int i=0; i<graph[curr].size(); i++){
             Edge e=graph[curr].get(i);
             if(!vis[e.dest]){
-                dfs(graph, e.dest, vis);
+                dfsUtil(graph, e.dest, vis);
             }
         }
     }    
