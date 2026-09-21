@@ -1,7 +1,7 @@
-public class LCS_1143 {
+public class Shortest_common_l {
     public static void main(String[] args) {
-          String text1="AGGTAB";
-          String text2="GXTXAYB";
+     String text1="abcde";
+          String text2="ace";
 
           char []s1=text1.toCharArray();
           char []s2=text2.toCharArray();
@@ -28,6 +28,6 @@ public class LCS_1143 {
                 }
             }
           }   
-         System.out.println(m+n-dp[m][n]);
+          System.out.println(dp[m][n]);
     }
 }

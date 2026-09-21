@@ -1,7 +1,7 @@
-public class LCS_1143 {
+public class LCSubstring {
     public static void main(String[] args) {
-          String text1="AGGTAB";
-          String text2="GXTXAYB";
+               String text1="abcde";
+          String text2="ace";
 
           char []s1=text1.toCharArray();
           char []s2=text2.toCharArray();
@@ -24,10 +24,11 @@ public class LCS_1143 {
                 if(s1[i-1]==s2[j-1]){
                     dp[i][j]=1+dp[i-1][j-1];
                 }else{
-                    dp[i][j]=Math.max(dp[i-1][j],dp[i][j-1]);
+                    dp[i][j]=0;
                 }
             }
           }   
-         System.out.println(m+n-dp[m][n]);
+          System.out.println(dp[m][n]);
     }
+    
 }

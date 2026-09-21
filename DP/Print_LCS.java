@@ -1,7 +1,7 @@
-public class LCS_1143 {
+public class Print_LCS {
     public static void main(String[] args) {
-          String text1="AGGTAB";
-          String text2="GXTXAYB";
+               String text1="abcde";
+          String text2="ace";
 
           char []s1=text1.toCharArray();
           char []s2=text2.toCharArray();
@@ -28,6 +28,25 @@ public class LCS_1143 {
                 }
             }
           }   
-         System.out.println(m+n-dp[m][n]);
+// print lcs
+        String str="";
+        int i=m;
+        int j=n;
+        while(i>=0 && j>=0){
+            if(dp[i]==dp[j]){
+                str+=s1[j];
+                i--;
+                j--;
+            }else{
+                if(dp[i][j-1] > dp[i-1][j]){
+                    j--;
+                }else{
+                    i--;
+                }
+            }
+        }
+        String reverse = new StringBuilder(str).reverse().toString();
+        System.out.println(reverse);
     }
+    
 }
