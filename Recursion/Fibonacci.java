@@ -10,8 +10,8 @@ public class Fibonacci {
     }
 
     public static void main(String[] args) {
-        int n = 11;
-       for(int i=0; i<=n; i++){
+        int n = 5;
+       for(int i=0; i<n; i++){
         System.out.println(fibo(i));
        }
     }
